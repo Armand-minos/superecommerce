@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul Poids et Expédition</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        input, button { margin-top: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculateur de frais d'expédition</h2>
+        <label for="quantity">Nombre de savons :</label>
+        <input type="number" id="quantity" value="1" min="1">
+        <button onclick="calculateShipping()">Calculer</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateShipping() {
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let weightPerItem = 125; // en grammes
+            let baseShipping = 5.25; // Prix de base en euros
+            let extraCharge = 1.50; // Supplément après le 3e article
+            
+            let totalWeight = quantity * weightPerItem;
+            let shippingCost = baseShipping;
+            
+            if (quantity > 2) {
+                shippingCost += (quantity - 2) * extraCharge;
+            }
+            
+            document.getElementById('result').innerHTML = `Poids total : ${totalWeight} g <br> Frais d'expédition : ${shippingCost.toFixed(2)} €`;
+        }
+    </script>
+</body>
+</html>
