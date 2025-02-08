@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoi d'email via AJAX</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <img src="logo.png" alt="Logo de l'entreprise" class="logo">
+        <h2>Formulaire d'envoi d'email</h2>
+        <form id="emailForm">
+            <input type="text" id="nomClient" name="nomClient" placeholder="Nom du client" required>
+            <input type="email" id="emailClient" name="emailClient" placeholder="Email du client" required>
+            <input type="text" id="adresseClient" name="adresseClient" placeholder="Adresse du client" required>
+            <input type="text" id="numCommande" name="numCommande" placeholder="Numéro de commande" required>
+            <input type="text" id="numSuivi" name="numSuivi" placeholder="Numéro de suivi" required>
+            <button type="submit">Envoyer</button>
+        </form>
+        <p id="resultat"></p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#emailForm").submit(function(event){
+                event.preventDefault();
+                $.ajax({
+                    url: "send_email.php",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $("#resultat").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
