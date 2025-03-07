@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header avec Menu Burger</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1c2331;
+            padding: 10px 20px;
+            color: white;
+            position: relative;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6351ce;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #7c4dff;
+        }
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .cart-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .connexion-btn {
+            background-color: #6351ce;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+        .connexion-btn:hover {
+            background-color: #7c4dff;
+        }
+
+        /* Style du menu burger */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .burger-menu div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+        .nav-links {
+            display: flex;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #1c2331;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Mon E-Commerce</div>
+    <nav>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#">Produit</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    <div class="icons">
+        <a href="#" class="connexion-btn">Connexion/Inscription</a>
+        <i class="fas fa-shopping-cart cart-icon"></i>
+    </div>
+    <!-- Menu burger -->
+    <div class="burger-menu" id="burger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</header>
+
+<script>
+    const burgerMenu = document.getElementById("burger-menu");
+    const navLinks = document.querySelector(".nav-links");
+
+    burgerMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>
